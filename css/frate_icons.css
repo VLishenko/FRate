@@ -1,0 +1,25 @@
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "frate_icons";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+}
+
+.icon-like:before { content: '\e800'; }
+.icon-noun_148034_cc:before { content: '\e801'; }
+.icon-paper-plane:before { content: '\e803'; }
+.icon-anonymous:before { content: '\e804'; }
+.icon-noun_69633_cc:before { content: '\e805'; }
+.icon-stat:before { content: '\e806'; }
+.icon-search:before { content: '\e808'; }
+.icon-question:before { content: '\e809'; }
+.icon-vk-social-network-logo:before { content: '\e802'; }
+.icon-icon:before { content: '\e807'; }
+.icon-facebook:before { content: '\e80a'; }

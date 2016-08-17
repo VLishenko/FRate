@@ -1,0 +1,218 @@
+<!doctype html>
+<html class="no-js" lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>User Profile</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/media.css">
+        <link rel="stylesheet" href="css/frate_icons.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <script src="js/vendor/progressbar.js"></script>
+    </head>
+    <body>
+
+        <script>
+
+        "use strict";
+
+const extend = (dest, source) => {
+  for (let prop in source) {
+    if (source.hasOwnProperty(prop)) {
+      dest[prop] = source[prop];
+    }
+  }
+
+  return dest;
+};
+
+class ProgressBar {
+  constructor (settings) {
+    this._opts = extend({
+      percent: 100,
+      duration: 1000,
+      angle: 0,
+      nsClassName: "progress-bar",
+      width: 232,
+      height: 232,
+    }, settings);
+
+    this._opts.radius = Math.floor(Math.min(this._opts.width, this._opts.height) / 2) - 10;
+  }
+
+  makeChart () {
+    const svgNS = "http://www.w3.org/2000/svg";
+
+    const svg = document.createElementNS(svgNS, "svg")
+      , path = document.createElementNS(svgNS, "circle")
+      , bar = document.createElementNS(svgNS, "circle")
+      , g = document.createElementNS(svgNS, "g")
+      , dot_area = document.createElementNS(svgNS, "circle")
+      , dot = document.createElementNS(svgNS, "circle")
+      , text = document.createElementNS(svgNS, "text")
+      , circleLength = 2 * Math.PI * this._opts.radius
+    ;
+
+    this._opts.path = path;
+    this._opts.bar = bar;
+    this._opts.text = text;
+    this._opts.dot = g;
+    this._opts.circleLength = circleLength;
+
+
+    svg.setAttribute("viewBox", `0 0 ${this._opts.width} ${this._opts.height}`);
+
+    svg.classList.add(`${this._opts.nsClassName}`);
+    path.classList.add(`${this._opts.nsClassName}__path`, `${this._opts.nsClassName}__path_back`);
+    bar.classList.add(`${this._opts.nsClassName}__path`, `${this._opts.nsClassName}__path_bar`);
+    text.classList.add(`${this._opts.nsClassName}__text`);
+    g.classList.add(`${this._opts.nsClassName}__dot`);
+
+    path.setAttribute("r", this._opts.radius);
+    path.setAttribute("cx", "50%");
+    path.setAttribute("cy", "50%");
+    path.setAttribute("fill", "#000");
+
+    bar.setAttribute("r", this._opts.radius);
+    bar.setAttribute("cx", "50%");
+    bar.setAttribute("cy", "50%");
+    bar.setAttribute("fill", "#383838");
+
+    text.setAttribute("x", "50%");
+    text.setAttribute("y", "50%");
+    text.setAttribute("dy", ".35em");
+
+    dot_area.setAttribute("r", this._opts.radius + 2);
+    dot_area.setAttribute("cx", "50%");
+    dot_area.setAttribute("cy", "50%");
+
+    dot.setAttribute("r", 8);
+    dot.setAttribute("cx", this._opts.width - 10);
+    dot.setAttribute("cy", "50%");
+
+    path.style.strokeDasharray = bar.style.strokeDasharray = circleLength;
+    path.style.strokeDashoffset = bar.style.strokeDashoffset = circleLength;
+
+    g.appendChild(dot_area);
+    g.appendChild(dot);
+
+    svg.appendChild(path);
+    svg.appendChild(bar);
+    svg.appendChild(text);
+    svg.appendChild(g);
+
+    return svg;
+  }
+
+  go () {
+    const getPercentLength = (len, percent, factor = 1) => len / 100 * percent * factor;
+
+    // From here: https://gist.github.com/gre/1650294
+    const easing = {
+      easeInOutQuad: t => t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t,
+      easeInOutCubic: t => t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
+    };
+
+    const draw = (elem, progress, percent, fn) => {
+      /**
+       * Animation callback function for drawing a circle path
+       *
+       * @param {Element}   SVG circle element
+       * @param {Number}    Completion rate [0..1]
+       * @param {Number}    Filling percentage
+       * @param {Function}  Easing function
+       */
+
+      elem.style.strokeDashoffset = this._opts.circleLength - getPercentLength(this._opts.circleLength, percent * fn(progress));
+    };
+
+    const rotate = (elem, progress, angle, x, y, fn) => {
+      /**
+       * Animation callback function for rotating a circle path
+       *
+       * @param {Element}   SVG circle element
+       * @param {Number}    Completion rate [0..1]
+       * @param {Number}    Angle of the rotation
+       * @param {Number}    x-position of the center of rotation
+       * @param {Number}    y-position of the center of rotation
+       * @param {Function}  Easing function
+       */
+
+      elem.setAttribute("transform", `rotate(${fn(progress) * angle} ${x} ${y})`);
+    };
+
+    const animate = () => {
+      let animationProgress = (Date.now() - animationStart) / this._opts.duration;
+
+      if (animationProgress >= 1) {
+        animationProgress = 1;
+      }
+
+      // dot's rotation is here
+      const dotRotateAngle = 360 * easing.easeInOutCubic(animationProgress) * this._opts.percent / 100;
+      this._opts.dot.setAttribute("transform", `rotate(${dotRotateAngle} ${this._opts.width/2} ${this._opts.height/2})`);
+
+      // ok, let's draw
+      draw(this._opts.path, animationProgress, 100, easing.easeInOutQuad);
+      draw(this._opts.bar, animationProgress, this._opts.percent, easing.easeInOutCubic);
+
+      if (this._opts.angle) {
+        rotate(path, animationProgress, settings.angle, this._opts.width/2, this._opts.height/2, easing.easeInOutQuad);
+        rotate(bar, animationProgress, settings.angle, this._opts.width/2, this._opts.height/2, easing.easeInOutQuad);
+      }
+
+      this._opts.text.textContent = Math.floor(this._opts.percent * easing.easeInOutQuad(animationProgress));
+
+
+      if (animationProgress !== 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    const animationStart = Date.now();
+    animate();
+  }
+}
+
+
+
+// try it
+
+
+const bar_1 = new ProgressBar({
+  percent: 34,
+  duration: 500
+});
+
+const bar_2 = new ProgressBar({
+  percent: 38,
+  duration: 500
+});
+
+const bar_3 = new ProgressBar({
+  percent: 45
+});
+
+const bar_4 = new ProgressBar({
+  percent: 12.5
+});
+
+document.body.appendChild( bar_1.makeChart() );
+document.body.appendChild( bar_2.makeChart() );
+document.body.appendChild( bar_3.makeChart() );
+document.body.appendChild( bar_4.makeChart() );
+
+setTimeout(bar_1.go.bind(bar_1), 500);
+setTimeout(bar_2.go.bind(bar_2), 500);
+setTimeout(bar_3.go.bind(bar_3), 500);
+setTimeout(bar_3.go.bind(bar_4), 500);
+
+        </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+    </body>
+</html>
