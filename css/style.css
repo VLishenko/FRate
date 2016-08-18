@@ -774,6 +774,10 @@ button,
             .progressbar-text:after {
                 content: "%";
             }*/
+            .data-counter_absolute {
+                top: 0px;
+                margin-top: 43px;
+            }
             .chart-block .data-counter {
                 line-height: 232px;
             }
@@ -810,6 +814,9 @@ button,
             .scale-block:hover .rate {
                 visibility: visible;
                 opacity: 1;
+            }
+            .scale-block-common {
+                padding: 40px 26px 18px 26px;
             }
 /*CHART BLOCK END*/
 
@@ -930,8 +937,9 @@ button,
             position: relative;
         }
         
-        .scale-title-name {
-
+        .scale-title-single{
+            margin-top: 32px;
+            margin-bottom: 16px;
         }
 
             .scale-title .data-counter {

@@ -15,6 +15,10 @@
     .title-height {
         min-height: 43px;
     }
+    .scale-title-single {
+        margin-top: 82px;
+        margin-bottom: 16px;
+    }
 }
 @media only screen and (max-width : 1442px) {
     
@@ -31,6 +35,9 @@
         padding: 0;
     }
     div.scale-block-single {
+        margin-top: 0;
+    }
+    .scale-title-single {
         margin-top: 0;
     }
 }
