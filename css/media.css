@@ -3,11 +3,14 @@
     .inner-page {
         width: 1085px;
     }
-    .footer-inner {
-        width: 1085px;
-    }
     .user-profile-menu {
         width: 230px;
+    }
+    .content-block {
+        padding-right: 320px;
+    }
+    .footer-inner {
+        width: 1085px;
     }
 }
 
