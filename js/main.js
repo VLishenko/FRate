@@ -71,3 +71,19 @@ bar_sex_fourth.go();
 
 $("#chart-animation-sex-five").append(bar_sex_fifth.makeChart() );
 bar_sex_fifth.go();
+
+// CIRCLE BAR ANIMATION faq
+const bar_faq_first = new ProgressBar({
+  percent: 52
+});
+
+const bar_faq_second = new ProgressBar({
+  percent: 86
+});
+
+$("#chart-animation-faq-one").append(bar_faq_first.makeChart() );
+bar_faq_first.go();
+
+$("#chart-animation-faq-two").append(bar_faq_second.makeChart() );
+bar_faq_second.go();
+

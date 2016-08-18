@@ -1861,7 +1861,7 @@ button,
         .preview-block-wrapper {
             position: relative;
             margin: 14px 0 14px 32px;
-            padding: 11px 49px 23px 13px;
+            padding: 11px 49px 35px 13px;
             border: 1px solid #e8e8e8;
             -webkit-transition: all 0.5s ease 0s;
             transition: all 0.5s ease 0s;
@@ -2382,6 +2382,12 @@ button,
 .progress-bar {
     width: 150px;
     height: 150px;
+}
+
+#chart-animation-faq-one .progress-bar,
+#chart-animation-faq-two .progress-bar {
+    width: 320px;
+    height: 320px;
 }
 
 .progress-bar__path {

@@ -19,6 +19,11 @@
         margin-top: 82px;
         margin-bottom: 16px;
     }
+    #chart-animation-faq-one .progress-bar,
+    #chart-animation-faq-two .progress-bar {
+        width: 280px;
+        height: 280px;
+    }
 }
 @media only screen and (max-width : 1442px) {
     
@@ -1128,7 +1133,7 @@
     }
     .preview-block-wrapper {
         margin-left: 11px;
-        padding: 4px 0 16px 13px;
+        padding: 4px 0 25px 13px;
     }
         .preview-block-wrapper .main-subtitle {
             margin-bottom: 1px;
