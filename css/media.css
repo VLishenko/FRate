@@ -3,16 +3,19 @@
     .inner-page {
         width: 1085px;
     }
-    .footer-inner {
-        width: 1085px;
-    }
     .user-profile-menu {
         width: 230px;
+    }
+    .content-block {
+        padding-right: 320px;
+    }
+    .footer-inner {
+        width: 1085px;
     }
 }
 
 /* Small Devices, Tablets */
-@media only screen and (max-width : 800px) {
+@media only screen and (max-width : 1100px) {
     .inner-page {
         width: 100%;
     }
@@ -118,7 +121,7 @@
         left: 351px;
     }*/
 }
-@media only screen and (max-device-width: 1280px) and (max-device-height: 800px), only screen and (max-width: 1280px) and (max-height: 800px) {
+@media only screen and (max-device-width: 1280px) and (max-device-height: 1100px), only screen and (max-width: 1280px) and (max-height: 1100px) {
     .skew-bg {
         left: 75px;
     }
@@ -248,7 +251,7 @@
                 margin-top: 23px;
             }
 }
-@media only screen and (min-device-width: 800px) and (max-device-width: 1600px), only screen and (min-width: 800px) and (max-width: 1600px) {
+@media only screen and (min-device-width: 1100px) and (max-device-width: 1600px), only screen and (min-width: 1100px) and (max-width: 1600px) {
     .homepage-wrapper {
         padding: 85px 16px 0  70px;
     }
@@ -449,7 +452,7 @@
         }
 
 }
-@media only screen and (min-device-width: 800px) and (max-device-width: 1024px), only screen and (min-width: 800px) and (max-width: 1024px) {
+@media only screen and (min-device-width: 1100px) and (max-device-width: 1024px), only screen and (min-width: 1100px) and (max-width: 1024px) {
     .entrance-header {
         font-size: 9px;
     }
@@ -505,7 +508,7 @@
 
 
 
-@media only screen and (min-device-width: 800px) and (max-device-width: 1440px), only screen and (min-width: 800px) and (max-width: 1440px) {
+@media only screen and (min-device-width: 1100px) and (max-device-width: 1440px), only screen and (min-width: 1100px) and (max-width: 1440px) {
     .user-profile-menu .logotype-img {
         width: 100%;
         height: auto;
@@ -553,7 +556,7 @@
             width: 50%;
         }
 }
-@media only screen and (max-device-width: 800px), only screen and (max-width: 800px) {
+@media only screen and (max-device-width: 1100px), only screen and (max-width: 1100px) {
     .inner-page .header {
         -webkit-flex-direction: column;
         -ms-flex-direction: column;
@@ -603,7 +606,7 @@
         left: 499px;
     }
 }
-@media only screen and (min-device-width: 640px) and (max-device-width: 800px), only screen and (min-width: 640px) and (max-width: 800px) {
+@media only screen and (min-device-width: 640px) and (max-device-width: 1100px), only screen and (min-width: 640px) and (max-width: 1100px) {
     .search-block {
         width: 292px;
     }
@@ -743,7 +746,7 @@
         margin-left: 5px;
     }
 }
-@media only screen and (min-device-width: 320px) and (max-device-width: 800px), only screen and (min-width: 320px) and (max-width: 800px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 1100px), only screen and (min-width: 320px) and (max-width: 1100px) {
     .homepage-wrapper {
         height: auto;
         /*overflow: visible;*/
@@ -785,7 +788,7 @@
         opacity: 0;
     }
 }
-@media only screen and (min-device-width: 320px) and (max-device-width: 800px), only screen and (min-width: 320px) and (max-width: 800px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 1100px), only screen and (min-width: 320px) and (max-width: 1100px) {
     .inner-page {
         margin-bottom: -470px;
     }
@@ -1170,7 +1173,7 @@
     }
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 800px) and (orientation: portrait), only screen and (min-width: 320px) and (max-width: 800px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 1100px) and (orientation: portrait), only screen and (min-width: 320px) and (max-width: 1100px) {
     .invisible-portrait {
         display: none;
         visibility: hidden;
@@ -1254,7 +1257,7 @@
 }
 
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 800px) and (orientation: landscape), only screen and (min-width: 320px) and (max-width: 800px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 1100px) and (orientation: landscape), only screen and (min-width: 320px) and (max-width: 1100px) {
     .invisible-landscape,
     .homepage-wrapper .faq-block {
         display: none;
