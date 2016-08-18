@@ -12,8 +12,16 @@
     .footer-inner {
         width: 1085px;
     }
+    .title-height {
+        min-height: 43px;
+    }
 }
-
+@media only screen and (max-width : 1442px) {
+    
+    .title-height {
+        min-height: auto;
+    }
+}
 /* Small Devices, Tablets */
 @media only screen and (max-width : 1023px) {
     .inner-page {
@@ -21,6 +29,14 @@
     }
     .content-block {
         padding: 0;
+    }
+    div.scale-block-single {
+        margin-top: 0;
+    }
+}
+@media only screen and (max-width : 400px) {
+    .title-height {
+        min-height: 40px;
     }
 }
 
@@ -143,7 +159,7 @@
         left: 360px;
     }
 }
-@media only screen and (min-device-width: 1440px) and (max-device-width: 1660px), only screen and (min-width: 1440px) and (max-width: 1660px) {
+@media only screen and (min-device-width: 1440px) and (max-device-width: 1680px), only screen and (min-width: 1440px) and (max-width: 1680px) {
     .scale-title {
         display: block;
     }
@@ -152,6 +168,24 @@
     }
     .scale-block-divided .scale-title .data-counter {
        position: absolute;
+    }
+    .date-counter_margins {
+        top: 0;
+        margin-top: 40px;
+    }
+    .data-counter_paddings {
+        padding-top: 18px;
+        padding-bottom: 3px;
+    }
+    .scale-block-single {
+        margin-top: 84px;
+    }
+    .chart-circle-wrapper svg{
+        width: 190px;
+    }
+
+    .scale-title-name {
+        padding-bottom: 10px;
     }
     .scale-block-divided .scale-bar-wrapper {
        margin-top: 70px;
@@ -249,6 +283,9 @@
             }
             .scale-action {
                 margin-top: 23px;
+            }
+            .scale-block-single {
+                margin-top: 80px;
             }
 }
 @media only screen and (min-device-width: 1023px) and (max-device-width: 1600px), only screen and (min-width: 1023px) and (max-width: 1600px) {

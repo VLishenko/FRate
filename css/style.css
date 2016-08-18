@@ -696,6 +696,7 @@ button,
         text-align: center;
         text-transform: uppercase;
     }
+    
     .chart-block-wrapper .chart-block {
         padding: 39px 0 45px 0;
         width: 25%;
@@ -886,6 +887,9 @@ button,
         position: relative;
         padding: 60px 26px 22px 26px;
     }
+    .scale-block-single {
+        margin-top: 40px;
+    }
     .scale-block-separated .scale-bar-wrapper {
         margin-left: 30px;
         margin-right: 30px;
@@ -911,6 +915,7 @@ button,
     .combined-scale .column:nth-child(2) {
         width: 45.785876993166287015945330296128%;
     }
+
         .scale-title {
             display: -webkit-box;
             display: -ms-flexbox;
@@ -924,6 +929,11 @@ button,
             justify-content: space-between;
             position: relative;
         }
+        
+        .scale-title-name {
+
+        }
+
             .scale-title .data-counter {
                 line-height: 50px;
             }
