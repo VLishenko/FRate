@@ -996,6 +996,8 @@
         right: 13px;
         visibility: visible;
         opacity: 1;
+        top: 0;
+        margin-top: 14px;
     }
         .btn-mobile-menu {
             display: block;
