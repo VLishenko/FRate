@@ -114,7 +114,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="banner-wrapper">
+                        <div class="banner-wrapper bottom-banner">
                             <a href="#" title="banner_780_90"><img src="img/banner_780_90.jpg" alt="banner_780_90" class="banner-img" width="780" height="90"></a>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                             <p>используют frate для подбора рабочих кадров</p>
                             <div class="chart-inner">
                             <div class="circle" data-value="0.65">
-                                <div class="value"></div>
+                                <div id="chart-animation-static-one"></div>
                             </div>
                             </div>
                         </div>
@@ -131,11 +131,11 @@
                             <p>ищут на frate информацию о своих партнерах</p>
                             <div class="chart-inner">
                             <div class="circle" data-value="0.76">
-                                <div class="value"></div>
+                                 <div id="chart-animation-static-two"></div>
                             </div>
                             </div>
                         </div>
-                        <div class="banner-wrapper banner-wrapper-bg">
+                        <div class="banner-wrapper banner-wrapper-bg banner-height">
                             <a href="#" title="banner_300_600"><img src="img/banner_300_600.jpg" alt="banner_300_600" class="banner-img" width="300" height="600"></a>
                         </div>
                     </div>
@@ -212,7 +212,168 @@
                 </div>
             </div>
         </footer>
+        <script>
 
+        "use strict";
+
+const extend = (dest, source) => {
+  for (let prop in source) {
+    if (source.hasOwnProperty(prop)) {
+      dest[prop] = source[prop];
+    }
+  }
+
+  return dest;
+};
+
+class ProgressBar {
+  constructor (settings) {
+    this._opts = extend({
+      percent: 100,
+      duration: 1000,
+      angle: 0,
+      nsClassName: "progress-bar",
+      width: 232,
+      height: 232,
+    }, settings);
+
+    this._opts.radius = Math.floor(Math.min(this._opts.width, this._opts.height) / 2) - 10;
+  }
+
+  makeChart () {
+    const svgNS = "http://www.w3.org/2000/svg";
+
+    const svg = document.createElementNS(svgNS, "svg")
+      , path = document.createElementNS(svgNS, "circle")
+      , bar = document.createElementNS(svgNS, "circle")
+      , g = document.createElementNS(svgNS, "g")
+      , dot_area = document.createElementNS(svgNS, "circle")
+      , dot = document.createElementNS(svgNS, "circle")
+      , text = document.createElementNS(svgNS, "text")
+      , circleLength = 2 * Math.PI * this._opts.radius
+    ;
+
+    this._opts.path = path;
+    this._opts.bar = bar;
+    this._opts.text = text;
+    this._opts.dot = g;
+    this._opts.circleLength = circleLength;
+
+
+    svg.setAttribute("viewBox", `0 0 ${this._opts.width} ${this._opts.height}`);
+
+    svg.classList.add(`${this._opts.nsClassName}`);
+    path.classList.add(`${this._opts.nsClassName}__path`, `${this._opts.nsClassName}__path_back`);
+    bar.classList.add(`${this._opts.nsClassName}__path`, `${this._opts.nsClassName}__path_bar`);
+    text.classList.add(`${this._opts.nsClassName}__text`);
+    g.classList.add(`${this._opts.nsClassName}__dot`);
+
+    path.setAttribute("r", this._opts.radius);
+    path.setAttribute("cx", "50%");
+    path.setAttribute("cy", "50%");
+    path.setAttribute("fill", "#000");
+
+    bar.setAttribute("r", this._opts.radius);
+    bar.setAttribute("cx", "50%");
+    bar.setAttribute("cy", "50%");
+    bar.setAttribute("fill", "#383838");
+
+    text.setAttribute("x", "50%");
+    text.setAttribute("y", "50%");
+    text.setAttribute("dy", ".35em");
+
+    dot_area.setAttribute("r", this._opts.radius + 2);
+    dot_area.setAttribute("cx", "50%");
+    dot_area.setAttribute("cy", "50%");
+
+    dot.setAttribute("r", 8);
+    dot.setAttribute("cx", this._opts.width - 10);
+    dot.setAttribute("cy", "50%");
+
+    path.style.strokeDasharray = bar.style.strokeDasharray = circleLength;
+    path.style.strokeDashoffset = bar.style.strokeDashoffset = circleLength;
+
+    g.appendChild(dot_area);
+    g.appendChild(dot);
+
+    svg.appendChild(path);
+    svg.appendChild(bar);
+    svg.appendChild(text);
+    svg.appendChild(g);
+
+    return svg;
+  }
+
+  go () {
+    const getPercentLength = (len, percent, factor = 1) => len / 100 * percent * factor;
+
+    // From here: https://gist.github.com/gre/1650294
+    const easing = {
+      easeInOutQuad: t => t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t,
+      easeInOutCubic: t => t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
+    };
+
+    const draw = (elem, progress, percent, fn) => {
+      /**
+       * Animation callback function for drawing a circle path
+       *
+       * @param {Element}   SVG circle element
+       * @param {Number}    Completion rate [0..1]
+       * @param {Number}    Filling percentage
+       * @param {Function}  Easing function
+       */
+
+      elem.style.strokeDashoffset = this._opts.circleLength - getPercentLength(this._opts.circleLength, percent * fn(progress));
+    };
+
+    const rotate = (elem, progress, angle, x, y, fn) => {
+      /**
+       * Animation callback function for rotating a circle path
+       *
+       * @param {Element}   SVG circle element
+       * @param {Number}    Completion rate [0..1]
+       * @param {Number}    Angle of the rotation
+       * @param {Number}    x-position of the center of rotation
+       * @param {Number}    y-position of the center of rotation
+       * @param {Function}  Easing function
+       */
+
+      elem.setAttribute("transform", `rotate(${fn(progress) * angle} ${x} ${y})`);
+    };
+
+    const animate = () => {
+      let animationProgress = (Date.now() - animationStart) / this._opts.duration;
+
+      if (animationProgress >= 1) {
+        animationProgress = 1;
+      }
+
+      // dot's rotation is here
+      const dotRotateAngle = 360 * easing.easeInOutCubic(animationProgress) * this._opts.percent / 100;
+      this._opts.dot.setAttribute("transform", `rotate(${dotRotateAngle} ${this._opts.width/2} ${this._opts.height/2})`);
+
+      // ok, let's draw
+      draw(this._opts.path, animationProgress, 100, easing.easeInOutQuad);
+      draw(this._opts.bar, animationProgress, this._opts.percent, easing.easeInOutCubic);
+
+      if (this._opts.angle) {
+        rotate(path, animationProgress, settings.angle, this._opts.width/2, this._opts.height/2, easing.easeInOutQuad);
+        rotate(bar, animationProgress, settings.angle, this._opts.width/2, this._opts.height/2, easing.easeInOutQuad);
+      }
+
+      this._opts.text.textContent = Math.floor(this._opts.percent * easing.easeInOutQuad(animationProgress));
+
+
+      if (animationProgress !== 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    const animationStart = Date.now();
+    animate();
+  }
+}
+        </script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>

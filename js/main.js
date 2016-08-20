@@ -1,15 +1,15 @@
 
 
-$(function(){
-    $('.truncate').succinct({
-        size: 205
-    });
-});
+// $(function(){
+//     $('.truncate').succinct({
+//         size: 205
+//     });
+// });
 
 
 // CIRCLE BAR ANIMATION user_profile
 const bar = new ProgressBar({
-  percent: 85.40
+  percent: 85
 });
 const bar_second = new ProgressBar({
   percent: 51
@@ -23,6 +23,7 @@ const bar_fourth = new ProgressBar({
 const bar_fifth = new ProgressBar({
   percent: 52
 });
+
 
 $("#chart-animation-one").append( bar.makeChart() );
 bar.type  = "text/javascript";
@@ -91,6 +92,16 @@ bar_faq_first.go();
 $("#chart-animation-faq-two").append(bar_faq_second.makeChart() );
 bar_faq_second.go();
 
+// CIRCLE BAR ANIMATION static page
+const bar_static_first = new ProgressBar({
+  percent: 52
+});
+$("#chart-animation-static-one").append(bar_faq_first.makeChart() );
+bar_faq_first.go();
 
-
+const bar_static_second = new ProgressBar({
+  percent: 86
+});
+$("#chart-animation-static-two").append(bar_faq_second.makeChart() );
+bar_faq_second.go();
 

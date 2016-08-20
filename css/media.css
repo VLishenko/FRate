@@ -19,11 +19,11 @@
         margin-top: -28px;
         margin-bottom: 16px;
     }
-    #chart-animation-faq-one .progress-bar,
+    /*#chart-animation-faq-one .progress-bar,
     #chart-animation-faq-two .progress-bar {
         width: 280px;
         height: 280px;
-    }
+    }*/
     
     .combined-scale .scale-block-single {
         margin-top: 65px;   
@@ -36,7 +36,8 @@
         width: 200px;
         height: 200px;
     }
-    .column.banner-wrapper-bg {
+    .column.banner-wrapper-bg,
+    .inner-content-right .banner-wrapper {
         width: 300px;
     }
     .column.banner-wrapper-bg, .banner-wrapper-bg {
@@ -60,7 +61,7 @@
         margin-bottom: 200px;
     }
 
-    .combined-scale .bottom-banner {
+    .page-wrapper .bottom-banner {
         position: absolute;
         bottom: 0px;
         width: 780px;
@@ -69,6 +70,12 @@
         margin-bottom: 30px;    
         padding: 0;
     }
+    .inner-content-right {
+        width: 320px;
+    }
+    /*.main-menu--large {
+        overflow: scroll;
+    }*/
 }
 @media only screen and (max-width : 1679px) {
     

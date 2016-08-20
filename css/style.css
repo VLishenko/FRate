@@ -728,6 +728,7 @@ button,
     }
     .inner-content-right .chart-block {
         padding-right: 21px;
+        cursor: pointer;
     }
     .content,
     .inner-content-left .chart-block {
@@ -1822,6 +1823,7 @@ button,
         -webkit-align-items: flex-start;
         -ms-flex-align: flex-start;
         align-items: flex-start;
+
     }
     .inner-content-left {
         width: 68.828125%;
@@ -2455,11 +2457,11 @@ button,
     height: 250px;
 }
 
-#chart-animation-faq-one .progress-bar,
+/*#chart-animation-faq-one .progress-bar,
 #chart-animation-faq-two .progress-bar {
     width: 320px;
     height: 320px;
-}
+}*/
 
 .progress-bar__path {
     stroke-width: 1px;
