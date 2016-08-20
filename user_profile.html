@@ -258,12 +258,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="banner-wrapper">
+                    <div class="banner-wrapper bottom-banner">
                         <a href="#" title="banner_780_90"><img src="img/banner_780_90.jpg" alt="banner_780_90" class="banner-img" width="780" height="90"></a>
                     </div>
                 </div>
                 <!-- SCALE BLOCK END -->
-                <div class="column banner-wrapper banner-wrapper-bg">
+                <div class="column banner-wrapper banner-wrapper-bg banner-height">
                     <a href="#" title="banner_300_600"><img src="img/banner_300_600.jpg" alt="banner_300_600" class="banner-img" width="300" height="600"></a>
                 </div>
                 </div>
@@ -376,8 +376,7 @@
             </div>
         </footer>
 
-        <script>
-
+        <script>;
         "use strict";
 
 const extend = (dest, source) => {
@@ -416,6 +415,13 @@ class ProgressBar {
       , text = document.createElementNS(svgNS, "text")
       , circleLength = 2 * Math.PI * this._opts.radius
     ;
+
+    // svg.type  = "text/javascript";
+    // path.type  = "text/javascript";
+    // g.type  = "text/javascript";
+    // dot_area.type  = "text/javascript";
+    // dot.type  = "text/javascript";
+    // circleLength.type  = "text/javascript";
 
     this._opts.path = path;
     this._opts.bar = bar;
@@ -560,9 +566,8 @@ const bar_1 = new ProgressBar({
 // const bar_4 = new ProgressBar({
 //   percent: 12.5
 // });
-
-$("#chart").append( bar_1.makeChart() );
-$("button").on("click", e => bar.go());
+// $("#chart").append( bar_1.makeChart() );
+// $("button").on("click", e => bar.go());
 // document.body.appendChild( bar_2.makeChart() );
 // document.body.appendChild( bar_3.makeChart() );
 // document.body.appendChild( bar_4.makeChart() );

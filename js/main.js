@@ -1,12 +1,15 @@
+
+
 $(function(){
     $('.truncate').succinct({
         size: 205
     });
 });
 
+
 // CIRCLE BAR ANIMATION user_profile
 const bar = new ProgressBar({
-  percent: 84
+  percent: 85.40
 });
 const bar_second = new ProgressBar({
   percent: 51
@@ -22,6 +25,7 @@ const bar_fifth = new ProgressBar({
 });
 
 $("#chart-animation-one").append( bar.makeChart() );
+bar.type  = "text/javascript";
 bar.go();
 
 $("#chart-animation-two").append( bar_second.makeChart() );
@@ -86,4 +90,7 @@ bar_faq_first.go();
 
 $("#chart-animation-faq-two").append(bar_faq_second.makeChart() );
 bar_faq_second.go();
+
+
+
 

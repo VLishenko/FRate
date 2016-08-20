@@ -1,3 +1,4 @@
+svg { -webkit-background-clip: text; }
 @font-face {
     font-family: 'Gotham Pro-Bold';
     src: url('fonts/GothamPro-Bold.eot');
@@ -172,13 +173,15 @@ h2:before,
 .main-subtitle:before {
     content: '';
     position: absolute;
-    display: block;
     top: 50%;
     border-width: 2px;
     border-style: solid;
-    -moz-border-radius: 50%;
+
+    display: inline-block;
     -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
     border-radius: 50%;
+    -khtml-border-radius: 50%;
 }
 h1:before,
 .main-title:before {
@@ -277,15 +280,17 @@ button,
     .list-item:before {
         content: '';
         position: absolute;
-        display: block;
         left: 0;
         top: 7px;
         width: 4px;
         height: 4px;
         border: 2px solid #f24841;
-        -moz-border-radius: 50%;
+
+        display: inline-block;
         -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
         border-radius: 50%;
+        -khtml-border-radius: 50%;
     }
 /*COMMON STYLES END*/
 
@@ -453,6 +458,13 @@ button,
         -ms-flex-pack: end;
         justify-content: flex-end;
     }
+        .main-menu .menu-item {
+           -webkit-transition: all 0.5s ease 0s;
+            transition: all 0.5s ease 0s; 
+        }
+        .main-menu .menu-item:hover {
+            background-color: #f4f4f4;
+        }
         .header-menu .menu-item {
             font-size: 20px;
             border-right: 1px solid #ddd;
@@ -550,22 +562,24 @@ button,
     }
         .profile-photo-holder {
             position: relative;
-            display: block;
             width: auto;
             height: auto;
-            border: 1px solid #383838;
-            -moz-border-radius: 50%;
+            display: inline-block;
             -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
             border-radius: 50%;
+            -khtml-border-radius: 50%;
+            border: 1px solid #383838;
         }
             .user-profile-photo {
                 position: relative;
-                display: block;
                 width: 114px;
                 height: 114px;
-                -moz-border-radius: 50%;
+                display: inline-block;
                 -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
                 border-radius: 50%;
+                -khtml-border-radius: 50%;
                 border: 5px solid transparent;
             }
         .user-info-holder {
@@ -612,15 +626,16 @@ button,
 }
     .social-wrapper .icon-noun_69633_cc {
         position: relative;
-        display: block;
         width: 77px;
         height: 77px;
         color: #f24841;
         text-decoration: none;
-        border: 2px solid #f24841;
-        -moz-border-radius: 50%;
+        display: inline-block;
         -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
         border-radius: 50%;
+        -khtml-border-radius: 50%;
+        border: 2px solid #f24841;
     }
     .social-wrapper .icon-noun_69633_cc:before {
         position: absolute;
@@ -996,10 +1011,11 @@ button,
                 display: inline-block;
                 width: 100%;
                 height: 16px;
-                border: 1px solid #383838;
-                -moz-border-radius: 8px;
                 -webkit-border-radius: 8px;
+                -moz-border-radius: 8px;
                 border-radius: 8px;
+                -khtml-border-radius: 8px;
+                border: 1px solid #383838;
                 overflow: hidden;
                 cursor: pointer;
             }
@@ -1214,14 +1230,15 @@ button,
             }
         .btn-facebook {
             position: relative;
-            display: block;
             height: 70px;
             padding: 0 48px 0 116px;
             font-size: 24px;
             background-color: #46619d;
-            -moz-border-radius: 3px;
+            display: inline-block;
             -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
             border-radius: 3px;
+            -khtml-border-radius: 3px;
         }
         .entrance-block .btn-facebook {
             margin: 27px 0;
@@ -1232,16 +1249,17 @@ button,
         .btn-facebook:after {
             content: '';
             position: absolute;
-            display: block;
             left: 37px;
             top: 50%;
             width: 43px;
             height: 43px;
             margin-top: -21px;
-            border: 1px solid #fff;
-            -moz-border-radius: 50%;
+            display: inline-block;
             -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
             border-radius: 50%;
+            -khtml-border-radius: 50%;
+            border: 1px solid #fff;
         }
         .user-profile-menu .btn-facebook:after {
             left: 19px;
@@ -1295,10 +1313,12 @@ button,
                 color: #d1d1d1;
                 line-height: 105px;
                 background-repeat: no-repeat;
-                border: 1px solid #fff;
-                -moz-border-radius: 50%;
+                display: inline-block;
                 -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
                 border-radius: 50%;
+                -khtml-border-radius: 50%;
+                border: 1px solid #fff;
             }
 /*ENTRANCE BLOCK END*/
 /*CONTENT AREA END*/
@@ -1319,9 +1339,12 @@ button,
     /*white-space: nowrap;*/
     line-height: 23px;
     background-color: rgba(0,0,0,.6);
-    -moz-border-radius: 10px;
+
+    display: inline-block;
     -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
     border-radius: 10px;
+    -khtml-border-radius: 10px;
     z-index: 2;
 }
     .search-block .colored-red {
@@ -1384,7 +1407,6 @@ button,
     }
         .counter {
             position: relative;
-            display: inline-block;
             width: 99px;
             height: 106px;
             margin: 0 10px;
@@ -1392,9 +1414,13 @@ button,
             font-size: 34px;
             text-align: center;
             line-height: 106px;
-             -moz-border-radius: 10px;
+
+            display: inline-block;
             -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
             border-radius: 10px;
+            -khtml-border-radius: 10px;
+
             box-shadow: 1px 1px 0 1px rgba(0,0,0,.25),
                         inset 1px 1px 0 rgba(255,255,255,.2);
             vertical-align: top;
@@ -1603,21 +1629,23 @@ button,
             .btn-add-friend:before {
                 content: '';
                 position: absolute;
-                display: block;
                 top: 50%;
                 left: 12px;
                 width: 50px;
                 height: 50px;
                 margin-top: -25px;
-                background: #f24841 url(../img/icon-plus-large.png) no-repeat 50% 50%;
-                -moz-border-radius: 50%;
+                background: #f24841 url(../img/icon-plus-large.png) no-repeat 50% 50%;     
+                display: inline-block;
                 -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
                 border-radius: 50%;
+                -khtml-border-radius: 50%;
             }
         .user-list-wrapper {
             padding: 33px 0 40px;
             background-color: #f24841;
         }
+
         .user-list {
             display: -webkit-box;
             display: -ms-flexbox;
@@ -1636,6 +1664,9 @@ button,
             font-size: 14px;
             line-height: 1.2;
             cursor: pointer;
+        } 
+        .user-list a:hover{
+            border-color: #fff;
         }
             .user-list .profile-photo-holder {
                 margin-right: 16px;
@@ -1662,7 +1693,6 @@ button,
             .user-list .username {
                 font-size: 16px;
                 line-height: 1;
-                word-break: break-all;
             }
             .user-list .user-status {
                color: #383838;
@@ -1951,10 +1981,12 @@ button,
                 height: 15px;
                 margin-top: -9px;
                 background-color: #fff;
-                border: 2px solid #e8e8e8;
-                -moz-border-radius: 50%;
+                display: inline-block;
                 -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
                 border-radius: 50%;
+                -khtml-border-radius: 50%;
+                border: 2px solid #e8e8e8;
                 box-shadow: 0 -4px #fff, 0 4px #fff;
                 z-index: 2;
             }
@@ -2257,7 +2289,6 @@ button,
             vertical-align: top;
         }
             .footer-menu-social .menu-link {
-                display: block;
                 width: 37px;
                 height: 37px;
                 color: #fff;
@@ -2265,9 +2296,12 @@ button,
                 text-decoration: none;
                 line-height: 37px;
                 background-color: #c6c6c6;
-                -moz-border-radius: 50%;
+                display: inline-block;
                 -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
                 border-radius: 50%;
+                -khtml-border-radius: 50%;
+
             }
             .footer-menu-social .menu-link:before {
                 font-size: 16px;
@@ -2448,10 +2482,9 @@ button,
     text-anchor: middle;
 
     font-size: 2.5rem;
-    font-family: "Open Sans", sans-serif;
-    font-weight: 300;
+    font-family: 'HelveticaNeueCyr-Thin', sans-serif;
 
-    fill: #bbb;
+    fill: #191919;
 }
 
 .stroke__dot {}
@@ -2463,8 +2496,6 @@ button,
 .progress-bar__dot circle:last-child {
     fill: #f24841;
 }
-
-
 
 
 /*.chart {

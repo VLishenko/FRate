@@ -55,6 +55,20 @@
     .chart-block .single-chart{
         top: -35px;
     }
+    .banner-height {
+        max-height: 730px;
+        margin-bottom: 200px;
+    }
+
+    .combined-scale .bottom-banner {
+        position: absolute;
+        bottom: 0px;
+        width: 780px;
+        left: 0px;
+        margin-left: 37px;
+        margin-bottom: 30px;    
+        padding: 0;
+    }
 }
 @media only screen and (max-width : 1679px) {
     
