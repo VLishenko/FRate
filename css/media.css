@@ -76,6 +76,15 @@
     /*.main-menu--large {
         overflow: scroll;
     }*/
+    .inner-content-right {
+        padding: 0;
+    }
+    .main-menu--large {
+        overflow: scroll;
+    }
+    .header-menu .input-phone-wrap {
+        width: auto;
+    }
 }
 @media only screen and (max-width : 1679px) {
     

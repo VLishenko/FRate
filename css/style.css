@@ -490,8 +490,11 @@ button,
             font-family: "HelveticaNeueCyr-Roman", sans-serif;
             font-size: 16px;
         }
-        .header-menu .input-has-phone {
-            padding-right: 32.903225806451612903225806451613%;
+        .header-menu .input-phone-wrap {
+            width: 320px;
+        }
+        .input-has-phone {
+            padding-right: 0;
         }
             .header-menu .menu-link,
             .header-menu .btn-search {
@@ -671,6 +674,10 @@ button,
         min-width: 390px;
         text-align: center;
     }
+    .main-menu--large .menu-item {
+        width: 322px;
+        min-width: auto;
+    }
         .main-menu .menu-link {
             display: -webkit-box;
             display: -ms-flexbox;
@@ -729,7 +736,9 @@ button,
     .inner-content-right .chart-block {
         padding-right: 21px;
         cursor: pointer;
+
     }
+    
     .content,
     .inner-content-left .chart-block {
         width: 100%;

@@ -337,7 +337,7 @@
                     <div class="user-list">
                         <a href="#" class="profile-photo-holder" title="Злая киска">
                             <img src="img/user-profile-photo.jpg" alt="" class="user-profile-photo">
-                        </a>
+                        </a>    
                         <div>
                             <p class="username">Злая киска</p>
                             <p class="user-status">Новичок</p>
@@ -392,7 +392,7 @@ const extend = (dest, source) => {
 class ProgressBar {
   constructor (settings) {
     this._opts = extend({
-      percent: 100,
+      percent: 100.00,
       duration: 1000,
       angle: 0,
       nsClassName: "progress-bar",
@@ -416,13 +416,6 @@ class ProgressBar {
       , circleLength = 2 * Math.PI * this._opts.radius
     ;
 
-    // svg.type  = "text/javascript";
-    // path.type  = "text/javascript";
-    // g.type  = "text/javascript";
-    // dot_area.type  = "text/javascript";
-    // dot.type  = "text/javascript";
-    // circleLength.type  = "text/javascript";
-
     this._opts.path = path;
     this._opts.bar = bar;
     this._opts.text = text;
@@ -437,6 +430,7 @@ class ProgressBar {
     bar.classList.add(`${this._opts.nsClassName}__path`, `${this._opts.nsClassName}__path_bar`);
     text.classList.add(`${this._opts.nsClassName}__text`);
     g.classList.add(`${this._opts.nsClassName}__dot`);
+
 
     path.setAttribute("r", this._opts.radius);
     path.setAttribute("cx", "50%");
@@ -484,29 +478,11 @@ class ProgressBar {
     };
 
     const draw = (elem, progress, percent, fn) => {
-      /**
-       * Animation callback function for drawing a circle path
-       *
-       * @param {Element}   SVG circle element
-       * @param {Number}    Completion rate [0..1]
-       * @param {Number}    Filling percentage
-       * @param {Function}  Easing function
-       */
 
       elem.style.strokeDashoffset = this._opts.circleLength - getPercentLength(this._opts.circleLength, percent * fn(progress));
     };
 
     const rotate = (elem, progress, angle, x, y, fn) => {
-      /**
-       * Animation callback function for rotating a circle path
-       *
-       * @param {Element}   SVG circle element
-       * @param {Number}    Completion rate [0..1]
-       * @param {Number}    Angle of the rotation
-       * @param {Number}    x-position of the center of rotation
-       * @param {Number}    y-position of the center of rotation
-       * @param {Function}  Easing function
-       */
 
       elem.setAttribute("transform", `rotate(${fn(progress) * angle} ${x} ${y})`);
     };
@@ -544,38 +520,6 @@ class ProgressBar {
   }
 }
 
-
-
-// try it
-
-
-const bar_1 = new ProgressBar({
-  percent: 34,
-  duration: 500
-});
-
-// const bar_2 = new ProgressBar({
-//   percent: 38,
-//   duration: 500
-// });
-
-// const bar_3 = new ProgressBar({
-//   percent: 45
-// });
-
-// const bar_4 = new ProgressBar({
-//   percent: 12.5
-// });
-// $("#chart").append( bar_1.makeChart() );
-// $("button").on("click", e => bar.go());
-// document.body.appendChild( bar_2.makeChart() );
-// document.body.appendChild( bar_3.makeChart() );
-// document.body.appendChild( bar_4.makeChart() );
-
-// setTimeout(bar_1.go.bind(bar_1), 500);
-// setTimeout(bar_2.go.bind(bar_2), 500);
-// setTimeout(bar_3.go.bind(bar_3), 500);
-// setTimeout(bar_3.go.bind(bar_4), 500);
 
         </script>
 

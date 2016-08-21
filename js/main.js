@@ -96,12 +96,11 @@ bar_faq_second.go();
 const bar_static_first = new ProgressBar({
   percent: 52
 });
-$("#chart-animation-static-one").append(bar_faq_first.makeChart() );
-bar_faq_first.go();
+$("#chart-animation-static-one").append(bar_static_first.makeChart() );
+bar_static_first.go();
 
 const bar_static_second = new ProgressBar({
   percent: 86
 });
-$("#chart-animation-static-two").append(bar_faq_second.makeChart() );
-bar_faq_second.go();
-
+$("#chart-animation-static-two").append(bar_static_second.makeChart() );
+bar_static_second.go();
