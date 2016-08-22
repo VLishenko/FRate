@@ -79,9 +79,25 @@
     .inner-content-right {
         padding: 0;
     }
+
     .main-menu--large {
-        overflow: scroll;
+        width: 853px;
+        
     }
+    .main-menu--large .menu-item {
+       font-size: 16px;
+       min-width: 247px;
+       width: auto;
+    }
+    .main-menu--large .menu-item:first-child {
+        min-width: 160px;
+        padding: 0px;
+    }
+    .main-menu--large .menu-item:last-child {
+        min-width: 176px;
+    }
+
+
     .header-menu .input-phone-wrap {
         width: auto;
     }
@@ -124,6 +140,14 @@
     }
     .chart-block .single-chart{
         margin-bottom: 0;
+    }
+    
+    .main-menu--large {
+        width: 100%;
+        overflow: scroll;
+    }
+    .main-menu--large .menu-item {
+       min-width: 320px !important;
     }
 }
 
