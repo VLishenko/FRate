@@ -60,6 +60,13 @@
         max-height: 730px;
         margin-bottom: 200px;
     }
+    .faq-page .page-wrapper .banner-height {
+        margin-bottom: 231px;
+    }
+    
+    .content + .pagination-menu {
+        margin: 27px 0 150px 0;
+    }
 
     .page-wrapper .bottom-banner {
         position: absolute;
@@ -69,6 +76,7 @@
         margin-left: 37px;
         margin-bottom: 30px;    
         padding: 0;
+        z-index: 3;
     }
     .inner-content-right {
         width: 320px;
@@ -152,6 +160,15 @@
         font-size: 12px;
        min-width: 180px !important;
     }
+    .pushy .user-profile-menu,
+    .pushy .menu-item {
+        visibility: visible;
+        display: block;
+        opacity: 1;
+    }
+    .content + .pagination-menu {
+        margin: 27px 0 75px 0;
+    }
 }
 
 /* Small Devices, Tablets */
@@ -176,8 +193,8 @@
         display: inline;
         margin-left: 10px;
     }
-    .main-menu {
-        overflow: scroll;
+    .page-wrapper {
+        min-width: 320px; /* Какое-то начальное значение */
     }
 }
 
@@ -754,9 +771,15 @@
         visibility: hidden;
         opacity: 0;
     }
+
+    .pushy .menu-item {
+        display: inline-block;
+        visibility: visible;
+        opacity: 1;
+    }
     .user-profile-menu {
         bottom: 470px;
-        width: 78.666666666666666666666666666667%;
+        width: 230px;
     }
     .user-profile-homepage {
         overflow: scroll;
@@ -774,9 +797,9 @@
     .header-menu .menu-item {
         width: 100%;
     }
-    .user-profile-aside {
+    /*.user-profile-aside {
         background-size: 120% auto;
-    }
+    }*/
 }
 @media only screen and (max-device-width: 768px) and (max-device-height: 1024px), only screen and (max-width: 768px) and (max-height: 1024px) {
     .skew-background:before {
@@ -1436,12 +1459,12 @@
 
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 1023px) and (orientation: landscape), only screen and (min-width: 320px) and (max-width: 1023px) {
-    .invisible-landscape,
+    /*.invisible-landscape,
     .homepage-wrapper .faq-block {
         display: none;
         visibility: hidden;
         opacity: 0;
-    }
+    }*/
     .skew-background:before,
     .skew-background:after {
         height: 500%;
@@ -1500,3 +1523,49 @@
     }
 }
 /*@MEDIA FOR MOBILE AND TABLET END*/
+
+/* Small Devices, Main Page */
+@media only screen and (max-width : 1023px) {
+    .skew-bg {
+        left: 83px;
+    }
+    .header-homepage .header-title {
+        letter-spacing: -1.1px;
+    }
+    .search-block {
+        width: 267px; 
+        padding: 20px 18px;
+        margin: 30px auto 0;
+    }
+    .search-block p {
+        font-size: 9px;
+        font-family: 'HelveticaNeueCyr-Medium';
+    }
+    .search-hidden-word {
+        display: none;
+    }
+    .search-block .colored-red {
+        font-size: 12px;
+        font-family: 'HelveticaNeueCyr-Bold';
+    }
+
+    .search-block  .input-search {
+        font-size: 12px;
+
+    }
+    .counter-block-wrapper {
+        padding: 0;
+        margin-bottom: 76px;
+    }
+    .counter-title {
+        font-size: 10px;
+        padding-left: 5px; 
+    }
+    .counter-subtitle {
+        font-size: 9px;
+    }
+
+    .goals-block {
+        padding: 14px 0 13px 70px;
+    }
+}

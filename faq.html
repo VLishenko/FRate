@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="css/frate_icons.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
-    <body>
+    <body class="faq-page">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -32,9 +32,6 @@
                         <p class="header-title"><span class="colored-red">Анонимная
 система</span>независимых
 оценок</p>
-                        <div class="btn-mobile-menu-wrapper visible-mobile">
-                            <a href="#" class="btn-mobile-menu" title="menu">menu</a>
-                        </div>
                     </div>
 
                         <ul class="menu header-menu">
@@ -257,24 +254,25 @@
                 </div>
             </div>
         </footer>
-         <script>
-
+<script>;
         "use strict";
 
-const extend = (dest, source) => {
-  for (let prop in source) {
-    if (source.hasOwnProperty(prop)) {
-      dest[prop] = source[prop];
+function extend (dest, source){
+    for (var prop in source) {
+      if (source.hasOwnProperty(prop)) {
+        dest[prop] = source[prop];
+      }
     }
-  }
 
-  return dest;
-};
+    return dest;
+}
 
 class ProgressBar {
+ 
   constructor (settings) {
-    this._opts = extend({
-      percent: 100,
+
+      this._opts = extend({
+      percent: 100.00,
       duration: 1000,
       angle: 0,
       nsClassName: "progress-bar",
@@ -286,9 +284,9 @@ class ProgressBar {
   }
 
   makeChart () {
-    const svgNS = "http://www.w3.org/2000/svg";
+    var svgNS = "http://www.w3.org/2000/svg";
 
-    const svg = document.createElementNS(svgNS, "svg")
+    var svg = document.createElementNS(svgNS, "svg")
       , path = document.createElementNS(svgNS, "circle")
       , bar = document.createElementNS(svgNS, "circle")
       , g = document.createElementNS(svgNS, "g")
@@ -297,7 +295,7 @@ class ProgressBar {
       , text = document.createElementNS(svgNS, "text")
       , circleLength = 2 * Math.PI * this._opts.radius
     ;
-
+   
     this._opts.path = path;
     this._opts.bar = bar;
     this._opts.text = text;
@@ -312,6 +310,7 @@ class ProgressBar {
     bar.classList.add(`${this._opts.nsClassName}__path`, `${this._opts.nsClassName}__path_bar`);
     text.classList.add(`${this._opts.nsClassName}__text`);
     g.classList.add(`${this._opts.nsClassName}__dot`);
+
 
     path.setAttribute("r", this._opts.radius);
     path.setAttribute("cx", "50%");
@@ -348,82 +347,69 @@ class ProgressBar {
 
     return svg;
   }
+  getPercentLength (len, percent){
+      return len / 100 * percent * 1;
+  }
+  draw(elem, progress, percent, fn){
+      elem.style.strokeDashoffset = this._opts.circleLength - this.getPercentLength(this._opts.circleLength, percent * fn(progress));
+  }
+  rotate(elem, progress, angle, x, y, fn) {
+
+    elem.setAttribute("transform", `rotate(${fn(progress) * angle} ${x} ${y})`);
+  }
+
 
   go () {
-    const getPercentLength = (len, percent, factor = 1) => len / 100 * percent * factor;
 
+     var  getPercentLength=function(len, percent){
+          return len / 100 * percent * 1;
+      }
     // From here: https://gist.github.com/gre/1650294
-    const easing = {
-      easeInOutQuad: t => t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t,
-      easeInOutCubic: t => t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
-    };
+      var easing = {
+                  easeInOutQuad:function(t){return t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t},
+                  easeInOutCubic: function (t) { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 },
+       };
+      var animate = function (self) {
+          
+          var animationProgress = (Date.now() - animationStart) / self._opts.duration;
 
-    const draw = (elem, progress, percent, fn) => {
-      /**
-       * Animation callback function for drawing a circle path
-       *
-       * @param {Element}   SVG circle element
-       * @param {Number}    Completion rate [0..1]
-       * @param {Number}    Filling percentage
-       * @param {Function}  Easing function
-       */
+          if (animationProgress >= 1) {
+              animationProgress = 1;
+          }
 
-      elem.style.strokeDashoffset = this._opts.circleLength - getPercentLength(this._opts.circleLength, percent * fn(progress));
-    };
+          // dot's rotation is here
+          var  dotRotateAngle = 360 * easing.easeInOutCubic(animationProgress) * self._opts.percent / 100;
+          self._opts.dot.setAttribute("transform", `rotate(${dotRotateAngle} ${self._opts.width/2} ${self._opts.height/2})`);
 
-    const rotate = (elem, progress, angle, x, y, fn) => {
-      /**
-       * Animation callback function for rotating a circle path
-       *
-       * @param {Element}   SVG circle element
-       * @param {Number}    Completion rate [0..1]
-       * @param {Number}    Angle of the rotation
-       * @param {Number}    x-position of the center of rotation
-       * @param {Number}    y-position of the center of rotation
-       * @param {Function}  Easing function
-       */
+          // ok, let's draw
+          self.draw(self._opts.path, animationProgress, 100, easing.easeInOutQuad);
+          self.draw(self._opts.bar, animationProgress, self._opts.percent, easing.easeInOutCubic);
 
-      elem.setAttribute("transform", `rotate(${fn(progress) * angle} ${x} ${y})`);
-    };
+          if (self._opts.angle) {
+              rotate(path, animationProgress, settings.angle, this._opts.width/2, this._opts.height/2, easing.easeInOutQuad);
+              rotate(bar, animationProgress, settings.angle, this._opts.width/2, this._opts.height/2, easing.easeInOutQuad);
+          }
 
-    const animate = () => {
-      let animationProgress = (Date.now() - animationStart) / this._opts.duration;
-
-      if (animationProgress >= 1) {
-        animationProgress = 1;
-      }
-
-      // dot's rotation is here
-      const dotRotateAngle = 360 * easing.easeInOutCubic(animationProgress) * this._opts.percent / 100;
-      this._opts.dot.setAttribute("transform", `rotate(${dotRotateAngle} ${this._opts.width/2} ${this._opts.height/2})`);
-
-      // ok, let's draw
-      draw(this._opts.path, animationProgress, 100, easing.easeInOutQuad);
-      draw(this._opts.bar, animationProgress, this._opts.percent, easing.easeInOutCubic);
-
-      if (this._opts.angle) {
-        rotate(path, animationProgress, settings.angle, this._opts.width/2, this._opts.height/2, easing.easeInOutQuad);
-        rotate(bar, animationProgress, settings.angle, this._opts.width/2, this._opts.height/2, easing.easeInOutQuad);
-      }
-
-      this._opts.text.textContent = Math.floor(this._opts.percent * easing.easeInOutQuad(animationProgress));
+          self._opts.text.textContent = Math.floor(self._opts.percent * easing.easeInOutQuad(animationProgress)).toFixed(2)+"%";
 
 
-      if (animationProgress !== 1) {
-        requestAnimationFrame(animate);
-      }
-    };
 
-    const animationStart = Date.now();
-    animate();
+          if (animationProgress !== 1) {
+              requestAnimationFrame(function(){
+                animate(self);
+              });
+          }
+      };
+      var animationStart = Date.now();
+      animate(this);
   }
 }
         </script>
 
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
-        <script src="js/vendor/circle-progress.js"></script>
-        <script src="js/vendor/jQuery.succinct.js"></script>
+        <script src="https://rawgit.com/kottenator/jquery-circle-progress/1.1.3/dist/circle-progress.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
     </body>

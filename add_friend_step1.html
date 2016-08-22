@@ -5,11 +5,13 @@
         <title>Add Friend Step 1</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="js/popover/webui-popover.min.css">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/media.css">
         <link rel="stylesheet" href="css/frate_icons.css">
+        <link rel="stylesheet" href="js/pushy-master/pushy.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
         <script src="js/vendor/progressbar.js"></script>
     </head>
@@ -17,6 +19,13 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+
+        <!-- Site Overlay -->
+        <div class="site-overlay"></div>
+
+        <!-- Your Content -->
+        <div id="container">
+
         <div class="page-wrapper inner-page">
             <div class="main-page content-block">
                 <div class="banner-wrapper header-banner">
@@ -33,7 +42,7 @@
                         <p class="header-title"><span class="colored-red">Анонимная
 система</span>независимых
 оценок</p>
-                        <div class="btn-mobile-menu-wrapper visible-mobile">
+                        <div class="btn-mobile-menu-wrapper visible-mobile menu-btn">
                             <a href="#" class="btn-mobile-menu" title="menu">menu</a>
                         </div>
                     </div>
@@ -85,7 +94,7 @@
                                 <p class="form-subheading">которого Вы хотите оценить</p>
                                 <div class="input-wrapper">
                                     <input type="text" placeholder="Например: +7 (916) 123-45-67" class="input-search">
-                                    <a href="#" title="зачем вам телефон?" class="input-text">Зачем вам телефон?</a>
+                                    <a href="#" class="input-text telephone-popover">Зачем вам телефон?</a>
                                 </div>
                                 <button class="btn-submit" type="submit">отправить</button>
                             </form>
@@ -212,11 +221,102 @@
                 </div>
             </div>
         </footer>
+</div>        
+        <!-- Start Pushy Menu -->
+        <div class="pushy pushy-right">
+             <!-- PROFILE MENU START -->
+            <div class="user-profile-menu opened-mobile">
+                <a href="#" class="close pushy-link" title="Close"></a>
+                <div class="user-profile-aside">
+                    <a href="#" class="profile-photo-holder" title="Yury Orlov">
+                        <img src="img/user-profile-photo.jpg" alt="" class="user-profile-photo">
+                    </a>
+                    <div>
+                        <p class="username">Yury Orlov</p>
+                        <p class="user-phone">+7 (452) 634-92-22</p>
+                        <p class="user-status">Эксперт</p>
+                    </div>
+                </div>
+                <form action="#">
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="Поиск друзей..." class="input-search">
+                        <button class="btn-search icon-search" type="submit"></button>
+                    </div>
+                    <div class="add-input-wrapper"><button class="btn-add-friend">Добавить друга</button></div>
+                </form>
+                <div class="user-list-wrapper">
+                    <div class="user-list">
+                        <a href="#" class="profile-photo-holder" title="Александра Варицкая">
+                            <img src="img/user-profile-photo.jpg" alt="" class="user-profile-photo">
+                        </a>
+                        <div>
+                            <p class="username">Александра Варицкая</p>
+                            <p class="user-status">Эксперт</p>
+                        </div>
+                    </div>
+                    <div class="user-list">
+                        <a href="#" class="profile-photo-holder" title="АssDriller83037">
+                            <img src="img/user-profile-photo.jpg" alt="" class="user-profile-photo">
+                        </a>
+                        <div>
+                            <p class="username">АssDriller83037</p>
+                            <p class="user-status">Гуру</p>
+                        </div>
+                    </div>
+                    <div class="user-list">
+                        <a href="#" class="profile-photo-holder" title="Маша Маша Известная Девчонка">
+                            <img src="img/user-profile-photo.jpg" alt="" class="user-profile-photo">
+                        </a>
+                        <div>
+                            <p class="username">Маша Маша Известная Девчонка</p>
+                            <p class="user-status">Эксперт</p>
+                        </div>
+                    </div>
+                    <div class="user-list">
+                        <a href="#" class="profile-photo-holder" title="Марио Брат">
+                            <img src="img/user-profile-photo.jpg" alt="" class="user-profile-photo">
+                        </a>
+                        <div>
+                            <p class="username">Марио Брат</p>
+                            <p class="user-status">Специалист</p>
+                        </div>
+                    </div>
+                    <div class="user-list">
+                        <a href="#" class="profile-photo-holder" title="Мики Штурмовик 102">
+                            <img src="img/user-profile-photo.jpg" alt="" class="user-profile-photo">
+                        </a>
+                        <div>
+                            <p class="username">Мики Штурмовик 102</p>
+                            <p class="user-status">Гуру</p>
+                        </div>
+                    </div>
+                    <div class="user-list">
+                        <a href="#" class="profile-photo-holder" title="Злая киска">
+                            <img src="img/user-profile-photo.jpg" alt="" class="user-profile-photo">
+                        </a>
+                        <div>
+                            <p class="username">Злая киска</p>
+                            <p class="user-status">Новичок</p>
+                        </div>
+                    </div>
+                </div>
+                <ul class="menu header-menu visible-mobile">
+                    <li class="menu-item"><a href="#" class="menu-link icon-noun_148034_cc" title=""></a></li>
+                    <li class="menu-item item-faq"><a href="#" class="menu-link" title="faq">faq</a></li>
+                    <li class="menu-item"><a href="#" class="menu-link" title="rus">rus</a></li>
+                </ul>
+            </div>
+            <!-- PROFILE MENU END -->
+        </div>
+        <!-- End Pushy Menu -->
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+        <script src="js/pushy-master/pushy.js"></script>
         <script src="js/plugins.js"></script>
+        <script src="js/popover/webui-popover.js"></script>
+        <script src="js/popover/popover.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>

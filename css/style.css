@@ -108,7 +108,11 @@ svg { -webkit-background-clip: text; }
   }
 }
 */
-
+html, body{
+    overflow-x: hidden;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+}
 
 /*COMMON STYLES START*/
 * {
@@ -129,6 +133,15 @@ body {
     line-height: 1.2;
     background-color: #e8e8e8;
 }
+
+input:focus,
+input:valid {
+    color: #383838;
+}
+/*input:focus {
+    font-weight: 600;
+}*/
+
 .colored-red {
     color: #f24841;
 }
@@ -1510,7 +1523,7 @@ button,
     background-color: #f24841;
     z-index: 3;
 }
-.user-profile-menu.opened-mobile:after {
+/*.pushy-right:before {
     content: '';
     position: absolute;
     left: 0;
@@ -1521,8 +1534,8 @@ button,
     background: -webkit-linear-gradient(left,  rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 100%);
     background: linear-gradient(to right,  rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3000000', endColorstr='#00000000',GradientType=1 );
-
-}
+    z-index: 3;
+}*/
 .user-profile-homepage {
     padding: 36px 34px 0 31px;
     background: #000 url(../img/right-menu-bg.jpg) no-repeat 0 0;
@@ -1602,6 +1615,7 @@ button,
                 padding: 5px 11px;
                 font-size: 15px;
             }
+            
             .user-profile-menu .btn-search {
                 position: absolute;
                 right: 8px;
@@ -1675,7 +1689,7 @@ button,
             line-height: 1.2;
             cursor: pointer;
         } 
-        .user-list a:hover{
+        .user-list:hover a{
             border-color: #fff;
         }
             .user-list .profile-photo-holder {
@@ -2572,3 +2586,26 @@ button,
     font-size: 9pt;
     text-transform: none;
 }*/
+
+
+/*Popover*/
+.webui-popover {
+    display: block;
+    top: 317px;
+    left: 604.5px;
+    width: 190px;
+    color: rgb(56, 56, 56);
+    font-size: 12px;
+    font-family: "HelveticaNeueCyr-Roman";
+    border-radius: 0px;
+    border-color: red;
+}
+.webui-popover.right {
+   margin-left: -110px; 
+}
+.webui-popover.right .arrow {
+    border-right-color: red;
+}
+.webui-popover.bottom .arrow {
+    border-bottom-color: red;
+}

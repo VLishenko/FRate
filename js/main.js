@@ -1,5 +1,3 @@
-
-
 // $(function(){
 //     $('.truncate').succinct({
 //         size: 205
@@ -104,3 +102,5 @@ const bar_static_second = new ProgressBar({
 });
 $("#chart-animation-static-two").append(bar_static_second.makeChart() );
 bar_static_second.go();
+
+
