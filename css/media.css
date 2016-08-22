@@ -141,6 +141,9 @@
     .chart-block .single-chart{
         margin-bottom: 0;
     }
+    .main-menu .menu-item {
+        min-width: 50%;
+    }
     
     .main-menu--large {
         width: 100%;
@@ -158,6 +161,12 @@
         text-align: center;
         margin-left: 165px;
     } 
+    .main-menu .menu-item {
+        font-size: 12px;
+    }
+    .main-menu .menu-link {
+        padding: 0;
+    }
     .main-menu--large {
         overflow: scroll;
     }
